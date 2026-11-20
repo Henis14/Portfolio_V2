@@ -1,0 +1,151 @@
+<section class="section hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="hero-badges" appReveal>
+        <p class="tag">{{ p.role }} / {{ p.stack }}</p>
+        <a class="availability" [routerLink]="[]" fragment="contact"
+          ><span class="pulse" aria-hidden="true"></span>{{ p.availability }}</a
+        >
+      </div>
+      <h1 class="display" appReveal="80">Henis<br />D'costa</h1>
+      <p class="hero-sub" appReveal="140">Database design / REST APIs / Angular front ends</p>
+      <p class="lead" appReveal="200">
+        I'm Henis, a full stack developer with 2 years of experience building and maintaining
+        scalable web applications on the .NET Core and Angular stack. Day to day, I maintain and
+        enhance H8SSRMS, a live production telecom SaaS platform, working across database design,
+        RESTful API development and full-stack debugging. I also freelance, building full-stack web
+        applications for clients.
+      </p>
+      <div class="btn-row" appReveal="260">
+        <a class="btn btn-dark" routerLink="/projects">View projects</a>
+        <a class="btn btn-accent" [href]="p.resumePdf" download>Download CV</a>
+      </div>
+      <dl class="stats" appReveal="320">
+        <div>
+          <dt>2 years</dt>
+          <dd>Full stack experience</dd>
+        </div>
+        <div>
+          <dt>9.96</dt>
+          <dd>MCA CGPA / 10</dd>
+        </div>
+        <div>
+          <dt>H8SSRMS</dt>
+          <dd>Live telecom SaaS</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-art" appReveal="200">
+      <app-glyph-portrait [src]="p.photo" fallback="HD" [alt]="'Portrait of ' + p.name" />
+    </div>
+  </div>
+  <div class="ticker" aria-label="Skills">
+    <div class="ticker-track">
+      @for (copy of [0, 1]; track copy) {
+        <ul class="ticker-group" [attr.aria-hidden]="copy === 1">
+          @for (s of tickerItems; track s) {
+            <li>{{ s }}</li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <p class="eyebrow" appReveal>Selected work</p>
+    <h2 class="h2" appReveal>Built, shipped, maintained.</h2>
+    <div class="stack-list">
+      @for (pr of featured; track pr.slug; let i = $index) {
+        <app-project-card [project]="pr" [dark]="i % 2 === 0" [appReveal]="i * 60" />
+      }
+    </div>
+    <a class="link-arrow" routerLink="/projects" appReveal>All projects →</a>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <p class="eyebrow" appReveal>Capabilities</p>
+    <h2 class="h2" appReveal>What I work with.</h2>
+    <div class="cap-grid">
+      @for (g of skills; track g.title; let i = $index) {
+        <article class="cap" [appReveal]="i * 70">
+          <h3>{{ g.title }}</h3>
+          <p>{{ g.items.join(' · ') }}</p>
+        </article>
+      }
+    </div>
+    <a class="link-arrow light" routerLink="/resume" appReveal>Full resume →</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+    <p class="eyebrow" appReveal>What I do</p>
+    <h2 class="h2" appReveal>Where my days go.</h2>
+    <p class="lead" appReveal>
+      My time is split between a live product during the day and freelance projects for clients.
+    </p>
+    <div class="days">
+      <article class="col-rule" appReveal>
+        <h3>Day job / {{ jobs[0].company }}</h3>
+        <p>
+          I maintain and enhance H8SSRMS, a telecom system for managing a company's interactions
+          with customers, clients and sales prospects: developing new features, optimizing SQL
+          Server structures and queries, and integrating third-party REST APIs. I started as an
+          intern at
+          {{ jobs[1].company }}
+        </p>
+        <a class="link-arrow" [routerLink]="['/projects', 'h8ssrms']">About H8SSRMS →</a>
+      </article>
+      <article class="col-rule" appReveal="80">
+        <h3>Freelance projects</h3>
+        <p>
+          I design and build full-stack web applications on .NET Core and Angular for clients across
+          different domains, such as The Beyond Frames: a fully responsive, brand-aligned website
+          with a dynamic admin dashboard. I am open to new freelance and part-time projects.
+        </p>
+        <a class="link-arrow" [routerLink]="['/projects', 'the-beyond-frames']"
+          >See client work →</a
+        >
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+    <p class="eyebrow" appReveal>Approach</p>
+    <h2 class="h2" appReveal>How the work gets done.</h2>
+    <div class="cols3">
+      @for (a of approach; track a.t; let i = $index) {
+        <article class="col-rule" [appReveal]="i * 80">
+          <h3>{{ a.t }}</h3>
+          <p>{{ a.d }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="about-card" appReveal>
+      <div>
+        <p class="eyebrow">Briefly, about me</p>
+        <h2 class="h2 m0">Developer first.</h2>
+        <p class="lead">
+          I hold a {{ edu[0].title }} from {{ edu[0].school }} (CGPA 9.96 / 10) and a BCA from
+          {{ edu[1].school }}. Since then I've been building and fixing software that runs in
+          production.
+        </p>
+      </div>
+      <div class="about-actions">
+        <a class="btn btn-dark" routerLink="/about">More about me</a>
+        <a class="btn btn-outline" routerLink="/resume">Read my resume</a>
+      </div>
+    </div>
+  </div>
+</section>

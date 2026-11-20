@@ -1,0 +1,29 @@
+<header class="hdr" [class.scrolled]="scrolled()">
+  <div class="wrap hdr-in">
+    <a routerLink="/" class="brand" (click)="open.set(false)"
+      >Henis D'costa<span class="dot" aria-hidden="true">.</span></a
+    >
+    <button
+      class="burger"
+      type="button"
+      [attr.aria-expanded]="open()"
+      aria-controls="site-nav"
+      (click)="open.set(!open())"
+    >
+      <span class="bar"></span><span class="bar"></span><span class="sr-only">Menu</span>
+    </button>
+    <nav id="site-nav" class="nav" [class.open]="open()" (click)="open.set(false)">
+      @for (l of links; track l.path) {
+        <a
+          [routerLink]="l.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: l.path === '/' }"
+          >{{ l.label }}</a
+        >
+      }
+      <a class="btn btn-accent" [href]="'mailto:' + p.email + '?subject=Let%27s%20talk'"
+        >Get in touch</a
+      >
+    </nav>
+  </div>
+</header>

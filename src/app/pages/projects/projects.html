@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow" appReveal>Projects</p>
+    <h1 class="display sm" appReveal="60">Selected work.</h1>
+    <p class="lead" appReveal="100">
+      A live telecom SaaS product, client websites and full-stack web apps, from database to front
+      end.
+    </p>
+
+    <div class="filters" role="group" aria-label="Filter projects" appReveal="140">
+      @for (k of kinds; track k) {
+        <button
+          type="button"
+          [attr.aria-pressed]="filter() === k"
+          [class.on]="filter() === k"
+          (click)="filter.set(k)"
+        >
+          {{ k }}
+        </button>
+      }
+    </div>
+
+    <div class="grid">
+      @for (pr of list(); track pr.slug; let i = $index) {
+        <div class="cell" [appReveal]="(i % 3) * 70">
+          <a class="tile" [routerLink]="['/projects', pr.slug]">
+            <span class="thumb"><app-project-cover [project]="pr" /></span>
+            <span class="tile-body">
+              <span class="tile-meta">{{ pr.no }} / {{ pr.kind }} / {{ pr.domain }}</span>
+              <span class="tile-title">{{ pr.title }} <b aria-hidden="true">→</b></span>
+              <span class="tile-blurb">{{ pr.blurb }}</span>
+            </span>
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>

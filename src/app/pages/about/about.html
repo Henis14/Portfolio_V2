@@ -1,0 +1,56 @@
+<section class="section">
+  <div class="wrap about">
+    <div>
+      <p class="eyebrow" appReveal>Profile</p>
+      <h1 class="display sm" appReveal="60">About.</h1>
+      <p class="lead" appReveal="120">
+        I'm {{ p.name }}, a {{ p.role.toLowerCase() }} with 2 years of experience on the .NET Core
+        and Angular stack. I work across database design, RESTful API development and full-stack
+        debugging.
+      </p>
+      <p class="lead" appReveal="160">
+        Since {{ jobs[0].period.split(' - ')[0] }}, I've been at {{ jobs[0].company }}, maintaining
+        and enhancing the H8SSRMS telecom SaaS platform, integrating third-party REST APIs and
+        resolving production issues so the application stays stable. I started at
+        {{ jobs[1].company }} as a full stack developer intern. {{ p.freelance }} I am currently
+        open to freelance and part-time projects.
+      </p>
+      <p class="lead" appReveal="200">
+        I hold a {{ edu[0].title }} from {{ edu[0].school }} (CGPA 9.96 / 10) and a
+        {{ edu[1].title }} from {{ edu[1].school }}.
+      </p>
+      <div class="btn-row" appReveal="240">
+        <a class="btn btn-dark" routerLink="/resume">Read my resume</a>
+        <a class="btn btn-outline" [href]="p.github" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-outline" [href]="p.linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div appReveal="120">
+      <a class="availability about-badge" [routerLink]="[]" fragment="contact"
+        ><span class="pulse" aria-hidden="true"></span>{{ p.availability }}</a
+      >
+      <dl class="facts">
+        <div>
+          <dt>Phone</dt>
+          <dd>
+            <a [href]="p.phoneHref">{{ p.phone }}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>{{ p.stack }}</dd>
+        </div>
+        <div>
+          <dt>Now</dt>
+          <dd>{{ jobs[0].role }}, Height 8</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a [href]="'mailto:' + p.email">{{ p.email }}</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

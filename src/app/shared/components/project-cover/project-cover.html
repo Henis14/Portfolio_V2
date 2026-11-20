@@ -1,0 +1,9 @@
+@let p = project();
+@if (p.logo) {
+  <img [src]="p.logo" [alt]="p.title + ' logo'" loading="lazy" decoding="async" />
+} @else {
+  <span class="no">{{ p.no }}</span>
+  @if (!compact()) {
+    <span class="t">{{ p.title }}</span>
+  }
+}

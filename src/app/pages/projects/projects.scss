@@ -1,0 +1,101 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 2.25rem 0 2.75rem;
+}
+
+.filters button {
+  padding: 0.7rem 1.1rem;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: 700 0.72rem / 1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.filters button:hover {
+  background: var(--card);
+}
+
+.filters button.on {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+}
+
+.cell {
+  display: flex;
+}
+
+.tile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.tile:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--accent);
+}
+
+.thumb {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 2px solid var(--ink);
+}
+
+.tile:hover .thumb ::ng-deep img {
+  transform: scale(1.05);
+}
+
+.tile-body {
+  display: grid;
+  gap: 0.55rem;
+  padding: 1.35rem 1.35rem 1.6rem;
+}
+
+.tile-meta {
+  font: 700 0.66rem / 1.4 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tile-title {
+  font: 800 1.25rem / 1.15 var(--sans);
+  text-transform: uppercase;
+}
+
+.tile-title b {
+  display: inline-block;
+  transition: transform 0.3s var(--ease);
+}
+
+.tile:hover .tile-title b {
+  transform: translateX(5px);
+  color: var(--accent);
+}
+
+.tile-blurb {
+  line-height: 1.55;
+}

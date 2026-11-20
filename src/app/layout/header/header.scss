@@ -1,0 +1,114 @@
+.hdr {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid transparent;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.hdr.scrolled {
+  border-color: var(--ink);
+}
+.hdr-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.brand {
+  font: 800 1.15rem/1 var(--sans);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.dot {
+  color: var(--accent);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.nav a:not(.btn) {
+  font: 700 0.74rem/1 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s var(--ease);
+}
+.nav a:not(.btn):hover {
+  border-color: var(--ink);
+}
+.nav a.active {
+  border-color: var(--accent);
+}
+.burger {
+  display: none;
+  place-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  background: transparent;
+  cursor: pointer;
+}
+.burger .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.3s var(--ease);
+}
+.burger[aria-expanded='true'] .bar:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+.burger[aria-expanded='true'] .bar:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+@media (max-width: 860px) {
+  .burger {
+    display: grid;
+  }
+  .nav {
+    position: fixed;
+    inset: 72px 0 auto 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    padding: 0.5rem 16px 1.25rem;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    box-shadow: 0 18px 30px rgb(17 17 17 / 0.12);
+    transform: translateY(-110%);
+    visibility: hidden;
+    transition:
+      transform 0.35s var(--ease),
+      visibility 0s linear 0.35s;
+    z-index: -1;
+  }
+  .nav.open {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.35s var(--ease);
+  }
+  .nav a:not(.btn) {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.85rem;
+  }
+  .nav .btn {
+    margin-top: 1rem;
+    text-align: center;
+  }
+}

@@ -1,0 +1,73 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border: 2px solid var(--ink);
+  font: 700 0.78rem / 1.2 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.btn-dark:hover {
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn-accent:hover {
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn-outline:hover {
+  background: var(--card);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.btn-ghost-light {
+  border-color: var(--paper);
+  background: transparent;
+  color: var(--paper);
+}
+
+.btn-ghost-light:hover {
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.dark .btn-accent {
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0 #ffffff33;
+}

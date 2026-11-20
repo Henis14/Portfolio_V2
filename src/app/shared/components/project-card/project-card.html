@@ -1,0 +1,18 @@
+@let p = project();
+<a class="pc" [class.dark]="dark()" [routerLink]="['/projects', p.slug]">
+  <span class="pc-no">{{ p.no }}</span>
+  <span class="pc-body">
+    <span class="pc-title">{{ p.title }}</span>
+    <span class="pc-blurb">{{ p.blurb }}</span>
+    <span class="pc-meta">
+      {{ p.kind }} / {{ p.domain }}
+      @if (p.stack.length) {
+        / {{ p.stack.join(' · ') }}
+      }
+    </span>
+  </span>
+  @if (p.logo) {
+    <app-project-cover class="pc-logo" [project]="p" [compact]="true" />
+  }
+  <span class="pc-arrow" aria-hidden="true">→</span>
+</a>

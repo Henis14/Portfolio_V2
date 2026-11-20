@@ -1,0 +1,84 @@
+<section class="section">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow" appReveal>Resume</p>
+        <h1 class="display sm" appReveal="60">{{ p.name }}</h1>
+        <p class="hero-sub" appReveal="100">{{ p.role }}</p>
+        <p class="contact-line" appReveal="120">
+          <a [href]="p.phoneHref">{{ p.phone }}</a><span aria-hidden="true">/</span
+          ><a [href]="'mailto:' + p.email">{{ p.email }}</a
+          ><span aria-hidden="true">/</span
+          ><a [href]="p.linkedin" target="_blank" rel="noopener">LinkedIn</a
+          ><span aria-hidden="true">/</span
+          ><a [href]="p.github" target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
+      <div class="head-actions" appReveal="140">
+        <a class="btn btn-accent" [href]="p.resumePdf" download>Download PDF</a>
+        <button class="btn btn-outline" type="button" (click)="print()">Print</button>
+      </div>
+    </div>
+    <p class="lead" appReveal>{{ p.summary }}</p>
+
+    <h2 class="block-t" appReveal>Experience</h2>
+    <ol class="timeline">
+      @for (j of jobs; track j.company) {
+        <li appReveal>
+          <div class="tl-head">
+            <h3>
+              {{ j.role }} <span>@ {{ j.company }}</span>
+            </h3>
+            <time>{{ j.period }}</time>
+          </div>
+          @if (j.intro) {
+            <p class="intro">{{ j.intro }}</p>
+          }
+          <ul>
+            @for (pt of j.points; track pt) {
+              <li>{{ pt }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ol>
+
+    <h2 class="block-t" appReveal>Education</h2>
+    <div class="edu">
+      @for (e of edu; track e.title) {
+        <article appReveal>
+          <time>{{ e.period }}</time>
+          <h3>{{ e.title }} ({{ e.short }})</h3>
+          <p>{{ e.school }}</p>
+          <p class="score">{{ e.score }}</p>
+        </article>
+      }
+    </div>
+
+    <h2 class="block-t" appReveal>Technical skills</h2>
+    <dl class="skills">
+      @for (g of skills; track g.title) {
+        <div appReveal>
+          <dt>{{ g.title }}</dt>
+          <dd>
+            @for (s of g.items; track s) {
+              <span>{{ s }}</span>
+            }
+          </dd>
+        </div>
+      }
+    </dl>
+
+    <h2 class="block-t" appReveal>Projects</h2>
+    <ul class="proj">
+      @for (pr of resumeProjects; track pr.slug) {
+        <li appReveal>
+          <a [routerLink]="['/projects', pr.slug]"
+            ><b>{{ pr.title }}.</b> {{ pr.blurb }}</a
+          >
+        </li>
+      }
+    </ul>
+    <p class="lead" appReveal>{{ p.freelance }}</p>
+  </div>
+</section>

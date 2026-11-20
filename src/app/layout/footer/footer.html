@@ -1,0 +1,23 @@
+<footer class="ftr dark" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <p class="availability ftr-badge">
+      <span class="pulse" aria-hidden="true"></span>{{ p.availability }}
+    </p>
+    <h2 class="ftr-title">Building something?<br /><span class="hl">Let's talk.</span></h2>
+    <p class="ftr-lead">{{ p.availabilityDetail }}</p>
+    <div class="ftr-cta">
+      <a class="btn btn-accent" [href]="'mailto:' + p.email">Email {{ p.email }}</a>
+      <a class="btn btn-ghost-light" [href]="p.phoneHref">Call {{ p.phone }}</a>
+    </div>
+  </div>
+  <nav class="ftr-bottom wrap" aria-label="Footer">
+    <div class="ftr-links">
+      <a routerLink="/">Home</a><a routerLink="/projects">Projects</a
+      ><a routerLink="/resume">Resume</a><a routerLink="/about">About</a>
+      <a [href]="p.github" target="_blank" rel="noopener">GitHub ↗</a>
+      <a [href]="p.linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <p class="ftr-meta">© {{ year }} {{ p.name }}. {{ p.role }}.</p>
+  </nav>
+</footer>

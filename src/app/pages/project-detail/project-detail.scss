@@ -1,0 +1,357 @@
+.back {
+  margin: 0 0 2.5rem;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 380px);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.cta {
+  margin: 2rem 0 0;
+}
+
+.brand {
+  aspect-ratio: 4 / 3;
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 2.5rem;
+  border-top: 2px solid var(--ink);
+}
+
+.ticks {
+  display: grid;
+  gap: 1rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ticks li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.ticks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--accent);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--ink);
+  font: 700 0.72rem / 1 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.shots-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin: clamp(3.5rem, 7vw, 5rem) 0 2rem;
+}
+
+.block-t {
+  margin: 0;
+  font: 800 clamp(1.5rem, 3vw, 2.1rem) / 1 var(--sans);
+  text-transform: uppercase;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.25rem 2rem;
+}
+
+.shot {
+  margin: 0;
+}
+
+.shot button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 2px solid var(--ink);
+  background: #fff;
+  box-shadow: 6px 6px 0 var(--ink);
+  cursor: zoom-in;
+  overflow: hidden;
+  text-align: left;
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.shot button:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--accent);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.dots i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+}
+
+.dots i:first-child {
+  background: var(--accent);
+}
+
+.url {
+  flex: 1;
+  overflow: hidden;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font: 600 0.72rem / 1 var(--sans);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.view {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #fff;
+}
+
+.view img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s var(--ease);
+}
+
+.shot button:hover .view img {
+  transform: scale(1.03);
+}
+
+.zoom {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  padding: 0.45rem 0.7rem;
+  border: 2px solid var(--ink);
+  background: var(--accent);
+  color: var(--ink);
+  font: 700 0.68rem / 1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.shot button:hover .zoom,
+.shot button:focus-visible .zoom {
+  opacity: 1;
+  transform: none;
+}
+
+.shot figcaption {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font: 700 0.74rem / 1.4 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.shot figcaption span {
+  color: var(--accent);
+}
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+
+.pager a {
+  padding: 1.25rem 1.4rem;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font: 800 1.1rem / 1.2 var(--sans);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.pager a:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.pager small {
+  display: block;
+  margin-bottom: 0.5rem;
+  font: 700 0.66rem / 1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.pager .r {
+  text-align: right;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgb(17 17 17 / 0.92);
+  animation: fade-in 0.25s var(--ease);
+}
+
+.lightbox figure {
+  margin: 0;
+  max-height: 100%;
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: calc(100vh - 8rem);
+  border: 2px solid var(--paper);
+  background: #fff;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.45);
+  animation: zoom-in 0.3s var(--ease);
+}
+
+.lightbox figcaption {
+  color: var(--paper);
+  font: 700 0.75rem / 1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lb-btn {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.lb-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.lb-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@media (max-width: 860px) {
+  .intro,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .brand {
+    max-width: 380px;
+  }
+
+  .lightbox {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lightbox figure {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .lb-prev {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 600px) {
+  .shots {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.gp {
+  container-type: inline-size;
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--accent);
+}
+.gp-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+  font: 600 0.68rem/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ffffff22;
+}
+.dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--accent);
+  margin-right: 0.5rem;
+}
+.gp-out {
+  margin: 0;
+  padding: 0.9rem;
+  font: 700 calc((100cqi - 1.8rem) / 96 / 0.66)/1.04 var(--code);
+  letter-spacing: 0.06em;
+  white-space: pre;
+  overflow: hidden;
+  color: #f2ead8;
+}

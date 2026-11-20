@@ -1,0 +1,128 @@
+@if (project(); as pr) {
+  <section class="section">
+    <div class="wrap">
+      <a class="link-arrow back" routerLink="/projects">← All projects</a>
+
+      <header class="intro">
+        <div>
+          <p class="eyebrow" appReveal>{{ pr.no }} / {{ pr.kind }} / {{ pr.domain }}</p>
+          <h1 class="display sm" appReveal="60">{{ pr.title }}</h1>
+          <p class="lead" appReveal="120">{{ pr.blurb }}</p>
+          @if (pr.url) {
+            <p class="cta" appReveal="160">
+              <a class="btn btn-accent" [href]="pr.url" target="_blank" rel="noopener"
+                >Visit live site ↗</a
+              >
+            </p>
+          }
+        </div>
+        @if (pr.logo) {
+          <div class="brand" appReveal="120"><app-project-cover [project]="pr" /></div>
+        }
+      </header>
+
+      <div class="split">
+        <div appReveal>
+          <h2 class="eyebrow">Overview</h2>
+          <ul class="ticks">
+            @for (d of pr.details; track d) {
+              <li>{{ d }}</li>
+            }
+          </ul>
+        </div>
+        @if (pr.stack.length) {
+          <aside appReveal="80">
+            <h2 class="eyebrow">Stack</h2>
+            <ul class="chips">
+              @for (s of pr.stack; track s) {
+                <li>{{ s }}</li>
+              }
+            </ul>
+          </aside>
+        }
+      </div>
+
+      @if (pr.screens?.length) {
+        <div class="shots-head" appReveal>
+          <h2 class="block-t">Screens</h2>
+          <p class="hint">
+            {{ pr.screens?.length }} screens. Click any screen to view it full size.
+          </p>
+        </div>
+        <div class="shots">
+          @for (s of pr.screens; track s.src; let i = $index) {
+            <figure class="shot" [appReveal]="(i % 2) * 80">
+              <button type="button" (click)="open(i)" [attr.aria-label]="'Enlarge ' + s.caption">
+                <span class="bar" aria-hidden="true">
+                  <span class="dots"><i></i><i></i><i></i></span>
+                  <span class="url">{{ s.caption }}</span>
+                </span>
+                <span class="view">
+                  <img
+                    [src]="s.src"
+                    [alt]="pr.title + ': ' + s.caption"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="zoom" aria-hidden="true">View ↗</span>
+                </span>
+              </button>
+              <figcaption>
+                <span>{{ (i + 1).toString().padStart(2, '0') }}</span>{{ s.caption }}
+              </figcaption>
+            </figure>
+          }
+        </div>
+      }
+
+      <nav class="pager" aria-label="More projects">
+        <a [routerLink]="['/projects', prev().slug]"><small>Previous</small>{{ prev().title }}</a>
+        <a class="r" [routerLink]="['/projects', next().slug]"
+          ><small>Next</small>{{ next().title }}</a
+        >
+      </nav>
+    </div>
+  </section>
+
+  @if (activeShot(); as s) {
+    <div
+      class="lightbox"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="s.caption"
+      (click)="close()"
+    >
+      <button class="lb-btn lb-close" type="button" aria-label="Close" (click)="close()">✕</button>
+      <button
+        class="lb-btn lb-prev"
+        type="button"
+        aria-label="Previous screen"
+        (click)="$event.stopPropagation(); step(-1)"
+      >
+        ←
+      </button>
+      <figure (click)="$event.stopPropagation()">
+        <img [src]="s.src" [alt]="pr.title + ': ' + s.caption" />
+        <figcaption>
+          {{ s.caption }} · {{ (active() ?? 0) + 1 }} / {{ pr.screens?.length }}
+        </figcaption>
+      </figure>
+      <button
+        class="lb-btn lb-next"
+        type="button"
+        aria-label="Next screen"
+        (click)="$event.stopPropagation(); step(1)"
+      >
+        →
+      </button>
+    </div>
+  }
+} @else {
+  <section class="section">
+    <div class="wrap">
+      <h1 class="display sm">Not found.</h1>
+      <p class="lead">That project doesn't exist.</p>
+      <p class="cta"><a class="btn btn-dark" routerLink="/projects">Back to projects</a></p>
+    </div>
+  </section>
+}

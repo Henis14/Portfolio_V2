@@ -1,0 +1,9 @@
+@each $weight in 300, 400, 600, 700, 800 {
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url('/fonts/bricolage-grotesque-#{$weight}.woff') format('woff');
+  }
+}

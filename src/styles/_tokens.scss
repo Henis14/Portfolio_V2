@@ -1,0 +1,17 @@
+:root {
+  --paper: #f3f0e8;
+  --card: #f8f5ec;
+  --ink: #111111;
+  --muted: #6b6b6b;
+  --line: #11111622;
+  --accent: #ff9a03;
+
+  --sans: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Bricolage Grotesque', 'Arial Narrow', sans-serif;
+  --code: ui-monospace, Consolas, monospace;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --header-h: 72px;
+
+  color-scheme: light;
+}
